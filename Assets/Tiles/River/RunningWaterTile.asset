@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: RunningWaterTile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 4345855005299641717, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: -5981081498018486565, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: 8975612836393929915, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: 2276107616821072118, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: 7496463983394475322, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: 405647414544923529, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: -620354890937468754, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  - {fileID: 758664758360023457, guid: bcf7aa529e5d54545a4990e2b2b6264e, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
