@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class UIHotbar : MonoBehaviour
 {
     public PlayerInventory playerInventory;
     public GameObject[] slots;
+    public GameObject moneyText;
 
     void Start()
     {
@@ -16,12 +18,14 @@ public class UIHotbar : MonoBehaviour
             Image img = obj.GetComponent<Image>();
             if(img != null)
             {
+                //Set icon to empty and hide slot
                 img.sprite = null;
                 obj.SetActive(false);
             }
             GameObject child = obj.transform.GetChild(0).gameObject;
             if(child != null)
             {
+                //Clear Text
                 TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
                 text.text = "";
             }
@@ -40,6 +44,7 @@ public class UIHotbar : MonoBehaviour
             Image img = slot.GetComponent<Image>();
             if(stack == null || !stack.isValid())
             {
+                //Set icon to empty, hide slot, and clear text
                 img.sprite = null;
                 slot.SetActive(false);
                 if (child != null)
@@ -49,6 +54,7 @@ public class UIHotbar : MonoBehaviour
                 }
             } else
             {
+                //Set icon to item's icon and update text count
                 img.sprite = stack.item.sprite;
                 slot.SetActive(true);
                 if (child != null)
@@ -56,6 +62,17 @@ public class UIHotbar : MonoBehaviour
                     TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
                     text.text = ""+stack.count;
                 }
+            }
+        }
+
+        //Update money total
+        if(moneyText != null)
+        {
+            TextMeshProUGUI text = moneyText.GetComponent<TextMeshProUGUI>();
+            if(text != null)
+            {
+                float moneyRounded = (float)Math.Round((double)playerInventory.money, 2);
+                text.text = "$" + playerInventory.money.ToString("F2");
             }
         }
     }

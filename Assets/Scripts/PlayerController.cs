@@ -8,13 +8,15 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask whatStopsMovement;
-    public int facing = 1;
+
+    public int facing = 1; //PLayer Facing Direction (UP, RIGHT, DOWN, LEFT)
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
+
     // Start is called before the first frame update
     void Start()
     {
-        facing = 1;
+        facing = 1; //Set to facing right by default
         spriteRenderer.sprite = sprites[facing];
         movePoint.parent = null;
     }

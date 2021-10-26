@@ -14,9 +14,11 @@ public class MouseController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
             if (hit.collider != null)
             {
+                //Get clicked gameobject
                 GameObject gameObject = hit.collider.gameObject;
                 if(gameObject != null)
                 {
+                    //Check if it is a fishing zone
                     FishingZone fishZone = gameObject.GetComponent<FishingZone>();
                     if(fishZone != null)
                     {
