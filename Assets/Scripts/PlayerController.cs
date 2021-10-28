@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Transform movePoint;
     public LayerMask whatStopsMovement;
 
-    public int facing = 1; //PLayer Facing Direction (UP, RIGHT, DOWN, LEFT)
+    public int facing = 1; //Player Facing Direction (UP, RIGHT, DOWN, LEFT)
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
 

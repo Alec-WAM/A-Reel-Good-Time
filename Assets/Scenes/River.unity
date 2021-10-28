@@ -302,7 +302,13 @@ MonoBehaviour:
   - {fileID: 5612386529470736649, guid: ae43c56799c05f741903d8d2f806f2eb, type: 3}
   - {fileID: 2687299569211312107, guid: 6472fa4532df5d34b9691cb2582e39e7, type: 3}
   - {fileID: 929240779129092741, guid: 4c763b6afc3da854d9e9c638002691cd, type: 3}
+  - {fileID: 5943716168219129133, guid: d9e689dc42d6486409e70abc66fcb4e6, type: 3}
   playerInventory: {fileID: 1888981704}
+  uiFishCaught: {fileID: 0}
+  currentCaughtFish:
+    item: {fileID: 0}
+    count: 0
+  hookedFish: 
 --- !u!61 &568352679
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3541,7 +3547,6 @@ GameObject:
   - component: {fileID: 1942326194}
   - component: {fileID: 1942326193}
   - component: {fileID: 1942326192}
-  - component: {fileID: 1942326195}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3614,15 +3619,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1942326195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1942326191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c044e6e554fddde479c4bb5f7ceb178d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
