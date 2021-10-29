@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public Transform movePoint;
     public LayerMask whatStopsMovement;
+    public LayerMask exit;
 
     public int facing = 1; //PLayer Facing Direction (UP, RIGHT, DOWN, LEFT)
     public SpriteRenderer spriteRenderer;
@@ -62,6 +64,29 @@ public class PlayerController : MonoBehaviour
                     movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                 }
             }
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Exit")
+        {
+            SceneManager.LoadScene("Ocean");
+        }
+        else if (collision.gameObject.tag == "Market")
+        {
+            SceneManager.LoadScene("Market");
+        }
+        else if (collision.gameObject.tag == "Lake")
+        {
+            SceneManager.LoadScene("Lake");
+        }
+        else if (collision.gameObject.tag == "River")
+        {
+            SceneManager.LoadScene("River");
+        }
+        else if (collision.gameObject.tag == "Pond")
+        {
+            SceneManager.LoadScene("Pond");
         }
     }
 }
