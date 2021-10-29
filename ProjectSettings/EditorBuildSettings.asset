@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Market.unity
+    guid: dbf9cbe1e7abbce48aab6f73102ddad4
+  - enabled: 1
+    path: Assets/Scenes/Lake.unity
+    guid: 52a2b2475cf2567409b6b6c797bb4611
+  - enabled: 1
+    path: Assets/Scenes/Ocean.unity
+    guid: 5a8f36a19150b644dae914dcebb89c6a
+  - enabled: 1
+    path: Assets/Scenes/Pond.unity
+    guid: d428cecbd40e22545987467704c78403
+  - enabled: 1
+    path: Assets/Scenes/River.unity
+    guid: 30f86c5629d5e2a4cbbb6a0dc8bbc5f4
   m_configObjects: {}
