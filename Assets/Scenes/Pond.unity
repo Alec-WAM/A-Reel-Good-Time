@@ -2285,7 +2285,6 @@ GameObject:
   - component: {fileID: 364942451}
   - component: {fileID: 364942450}
   - component: {fileID: 364942449}
-  - component: {fileID: 364942452}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2358,18 +2357,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &364942452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364942448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c044e6e554fddde479c4bb5f7ceb178d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &767230553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2577,7 +2564,14 @@ MonoBehaviour:
   fishLoot:
   - {fileID: 929240779129092741, guid: 4c763b6afc3da854d9e9c638002691cd, type: 3}
   - {fileID: 7107576551016524727, guid: 87d9472c033311f4a9dc1b6cd7fc9a1f, type: 3}
+  - {fileID: 1990409927738920062, guid: ea5e9e026e0dd6c4ca9e0ff25773ea3c, type: 3}
+  - {fileID: 2814101212591282702, guid: 563a9da9c1f59864ebd222e3f67e7800, type: 3}
+  - {fileID: 5943716168219129133, guid: d9e689dc42d6486409e70abc66fcb4e6, type: 3}
   playerInventory: {fileID: 1580999070}
+  uiFishCaught: {fileID: 1955542677}
+  currentCaughtFish:
+    item: {fileID: 0}
+    count: 0
 --- !u!114 &1580999070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 293319407352711758, guid: d7177890db43451409f5a6f175a770cf, type: 3}
@@ -2921,10 +2915,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1354463663}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: releaseFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FishingZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 305817524246329773, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1706942506403512661, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1580999070}
+    - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1354463663}
+    - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: keepFish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FishingZone, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7619945756565003970, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3008,6 +3046,14 @@ PrefabInstance:
     - target: {fileID: 7619945756565003970, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619945756565003981, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7619945756565003981, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7619945756565003982, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_Name
