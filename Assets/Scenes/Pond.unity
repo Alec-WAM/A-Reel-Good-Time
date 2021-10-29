@@ -2568,10 +2568,11 @@ MonoBehaviour:
   - {fileID: 2814101212591282702, guid: 563a9da9c1f59864ebd222e3f67e7800, type: 3}
   - {fileID: 5943716168219129133, guid: d9e689dc42d6486409e70abc66fcb4e6, type: 3}
   playerInventory: {fileID: 1580999070}
-  uiFishCaught: {fileID: 1955542677}
+  uiFishCaught: {fileID: 7619945756201480332}
   currentCaughtFish:
     item: {fileID: 0}
     count: 0
+  hookedFish: 
 --- !u!114 &1580999070 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 293319407352711758, guid: d7177890db43451409f5a6f175a770cf, type: 3}
@@ -3061,3 +3062,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+--- !u!1 &7619945756201480332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7379606015476262175, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+  m_PrefabInstance: {fileID: 7619945756201480331}
+  m_PrefabAsset: {fileID: 0}
