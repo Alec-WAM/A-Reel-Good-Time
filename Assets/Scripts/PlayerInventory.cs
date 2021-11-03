@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerInventory : MonoBehaviour
 {
+    private static string PLAYER_FISH_KEY = "PLAYER_FISH";
+    private static string PLAYER_MONEY_KEY = "PLAYER_MONEY";
+
     [System.Serializable]
     public class FishStack
     {
@@ -22,9 +26,96 @@ public class PlayerInventory : MonoBehaviour
             return item != null && count > 0;
         }
     }
-    
+
+    [CustomEditor(typeof(PlayerInventory))]
+    public class customButton : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            PlayerInventory myScript = (PlayerInventory)target;
+            if (GUILayout.Button("Clear Inventory"))
+            {
+                myScript.clearInventory();
+            }
+        }
+
+    }
+
+    public FishDictionary fishDictionary;
+
     public FishStack[] fishSlots;
     public float money;
+
+    void Start()
+    {
+        loadFromSave();
+    }
+
+    void writeToSave()
+    {
+        string fishString = "";
+        for(int i = 0; i < fishSlots.Length; i++)
+        {
+            FishStack stack = fishSlots[i];
+            if (i != 0)
+            {
+                fishString += ",";
+            }
+            if (stack == null || !stack.isValid())
+            {
+                fishString += "empty";
+            }
+            else
+            {
+                fishString += (stack.item.id) + "x" + stack.count;
+            }
+        }
+        PlayerPrefs.SetString(PLAYER_FISH_KEY, fishString);
+        PlayerPrefs.SetFloat(PLAYER_MONEY_KEY, money);
+        PlayerPrefs.Save();
+    }
+
+    void loadFromSave()
+    {
+        if (PlayerPrefs.HasKey(PLAYER_FISH_KEY))
+        {
+            string fishString = PlayerPrefs.GetString(PLAYER_FISH_KEY);
+            string[] fishList = fishString.Split(',');
+            fishSlots = new FishStack[fishSlots.Length];
+            for (int i = 0; i < fishList.Length; i++)
+            {
+                string item = fishList[i];
+                if (item == "empty")
+                {
+                    continue;
+                }
+                else
+                {
+                    string[] info = item.Split('x');
+                    string id = info[0];
+                    string count = info[1];
+                    FishItem lookupItem = fishDictionary.getItemByID(id);
+                    if (lookupItem != null)
+                    {
+                        fishSlots[i] = new FishStack(lookupItem, int.Parse(count));
+                    }
+                }
+            }
+        }
+        if (PlayerPrefs.HasKey(PLAYER_MONEY_KEY))
+        {
+            money = PlayerPrefs.GetFloat(PLAYER_MONEY_KEY);
+        }
+    }
+
+    void clearInventory()
+    {
+        fishSlots = new FishStack[fishSlots.Length];
+        money = 0;
+        writeToSave();
+    }
 
     void Update()
     {
@@ -78,6 +169,7 @@ public class PlayerInventory : MonoBehaviour
                 if (otherStack.item.id == stack.item.id) //Check if the same item
                 {
                     otherStack.count += stack.count; //Increase already exisiting slots size
+                    writeToSave();
                     return true;
                 }
             } else
@@ -94,6 +186,7 @@ public class PlayerInventory : MonoBehaviour
         {
             //We have room
             fishSlots[emptyIndex] = stack;
+            writeToSave();
             return true;
         }
         //Inventory is full
@@ -113,6 +206,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 fishSlots[slot] = null;
             }
+            writeToSave();
         }
     }
 

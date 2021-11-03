@@ -133,6 +133,9 @@ MonoBehaviour:
   whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  exit:
+    serializedVersion: 2
+    m_Bits: 0
   facing: 1
   spriteRenderer: {fileID: 7180790374508729671}
   sprites:
@@ -152,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56a8748fbbe3434e88dc3edd5d943b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishDictionary: {fileID: 5482848890243038578, guid: e3d6d68c9553243478cd69aa8266cf6f, type: 3}
   fishSlots:
   - item: {fileID: 0}
     count: 0
@@ -163,3 +167,4 @@ MonoBehaviour:
     count: 0
   - item: {fileID: 0}
     count: 0
+  money: 0

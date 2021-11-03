@@ -23,6 +23,11 @@ public class PlayerController : MonoBehaviour
         movePoint.parent = null;
     }
 
+    void Awake()
+    {
+        //DontDestroyOnLoad(gameObject);
+    }
+
     // Update is called once per frame
     void Update()
     {
