@@ -1920,6 +1920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0ba91a6c1ab544d8a76c79a4607dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rodType: 2
   fishLoot:
   - {fileID: 5612386529470736649, guid: ae43c56799c05f741903d8d2f806f2eb, type: 3}
   - {fileID: 2687299569211312107, guid: 6472fa4532df5d34b9691cb2582e39e7, type: 3}

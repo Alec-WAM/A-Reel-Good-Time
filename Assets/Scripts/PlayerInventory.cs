@@ -7,6 +7,9 @@ public class PlayerInventory : MonoBehaviour
 {
     private static string PLAYER_FISH_KEY = "PLAYER_FISH";
     private static string PLAYER_MONEY_KEY = "PLAYER_MONEY";
+    private static string PLAYER_ROD_KEY = "PLAYER_ROD";
+    private static string PLAYER_LURE_KEY = "PLAYER_LURE";
+    private static string PLAYER_LURES_BOUGHT_KEY = "PLAYER_LURES_BOUGHT";
 
     [System.Serializable]
     public class FishStack
@@ -39,14 +42,35 @@ public class PlayerInventory : MonoBehaviour
             {
                 myScript.clearInventory();
             }
+            if (GUILayout.Button("Lake Rod"))
+            {
+                myScript.currentRod = RodType.LAKE;
+                myScript.writeToSave();
+            }
+            if (GUILayout.Button("River Rod"))
+            {
+                myScript.currentRod = RodType.RIVER;
+                myScript.writeToSave();
+            }
+            if (GUILayout.Button("Ocean Rod"))
+            {
+                myScript.currentRod = RodType.OCEAN;
+                myScript.writeToSave();
+            }
         }
 
+    }
+
+    public enum RodType
+    {
+        POND, LAKE, RIVER, OCEAN
     }
 
     public FishDictionary fishDictionary;
 
     public FishStack[] fishSlots;
     public float money;
+    public RodType currentRod = RodType.POND;
 
     void Start()
     {
@@ -74,6 +98,7 @@ public class PlayerInventory : MonoBehaviour
         }
         PlayerPrefs.SetString(PLAYER_FISH_KEY, fishString);
         PlayerPrefs.SetFloat(PLAYER_MONEY_KEY, money);
+        PlayerPrefs.SetString(PLAYER_ROD_KEY, currentRod.ToString());
         PlayerPrefs.Save();
     }
 
@@ -107,6 +132,22 @@ public class PlayerInventory : MonoBehaviour
         if (PlayerPrefs.HasKey(PLAYER_MONEY_KEY))
         {
             money = PlayerPrefs.GetFloat(PLAYER_MONEY_KEY);
+        }
+        if (PlayerPrefs.HasKey(PLAYER_ROD_KEY))
+        {
+            string type = PlayerPrefs.GetString(PLAYER_ROD_KEY);
+            if (type.ToUpper().Equals("LAKE"))
+            {
+                currentRod = RodType.LAKE;
+            }
+            if (type.ToUpper().Equals("RIVER"))
+            {
+                currentRod = RodType.RIVER;
+            }
+            if (type.ToUpper().Equals("OCEAN"))
+            {
+                currentRod = RodType.OCEAN;
+            }
         }
     }
 

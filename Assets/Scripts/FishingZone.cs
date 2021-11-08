@@ -6,6 +6,7 @@ using TMPro;
 
 public class FishingZone : MonoBehaviour
 {
+    public PlayerInventory.RodType rodType;
     public List<FishItem> fishLoot;
 
     public PlayerInventory playerInventory;
@@ -22,10 +23,37 @@ public class FishingZone : MonoBehaviour
         }
     }
 
+    public bool canFishHere()
+    {
+        PlayerInventory.RodType playerRod = playerInventory.currentRod;
+        if(rodType == PlayerInventory.RodType.POND)
+        {
+            return true;
+        }
+        if (rodType == PlayerInventory.RodType.LAKE)
+        {
+            return playerRod != PlayerInventory.RodType.POND;
+        }
+        if (rodType == PlayerInventory.RodType.RIVER)
+        {
+            return playerRod != PlayerInventory.RodType.POND && playerRod != PlayerInventory.RodType.LAKE;
+        }
+        if (rodType == PlayerInventory.RodType.OCEAN)
+        {
+            return playerRod == PlayerInventory.RodType.OCEAN;
+        }
+        return false;
+    }
+
     //Pick random fish in fish loot list and give it to the player
     private void giveRandomLoot()
     {
-        if (fishLoot != null)
+        if (!canFishHere())
+        {
+            Debug.Log("You can't fish here");
+            return;
+        }
+        if (fishLoot != null && canFishHere())
         {
             var fishIndex = Random.Range(0, fishLoot.Count); //Get Random item
             FishItem item = fishLoot[fishIndex];

@@ -10,6 +10,7 @@ public class UIHotbar : MonoBehaviour
     public PlayerInventory playerInventory;
     public GameObject[] slots;
     public GameObject moneyText;
+    public GameObject rodText;
 
     void Start()
     {
@@ -73,6 +74,15 @@ public class UIHotbar : MonoBehaviour
             {
                 float moneyRounded = (float)Math.Round((double)playerInventory.money, 2);
                 text.text = "$" + playerInventory.money.ToString("F2");
+            }
+        }
+        //Update rod type
+        if (rodText != null)
+        {
+            TextMeshProUGUI text = rodText.GetComponent<TextMeshProUGUI>();
+            if (text != null)
+            {
+                text.text = "Rod: " + playerInventory.currentRod.ToString();
             }
         }
     }

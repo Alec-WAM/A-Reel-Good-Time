@@ -1663,6 +1663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0ba91a6c1ab544d8a76c79a4607dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rodType: 1
   fishLoot:
   - {fileID: 929240779129092741, guid: 4c763b6afc3da854d9e9c638002691cd, type: 3}
   - {fileID: 7107576551016524727, guid: 87d9472c033311f4a9dc1b6cd7fc9a1f, type: 3}
