@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public static string lastScene;
+    public static bool moveInMarket;
 
     public float moveSpeed = 5f;
     public Transform movePoint;
@@ -21,6 +23,36 @@ public class PlayerController : MonoBehaviour
         facing = 1; //Set to facing right by default
         spriteRenderer.sprite = sprites[facing];
         movePoint.parent = null;
+
+        if (moveInMarket)
+        {
+            if (lastScene == "Pond")
+            {
+                transform.position = new Vector3(0, 4, 0);
+                movePoint.position = new Vector3(0, 4, 0);
+                facing = 2;
+            }
+            if (lastScene == "Lake")
+            {
+                transform.position = new Vector3(0, -3, 0);
+                movePoint.position = new Vector3(0, -3, 0);
+                facing = 0;
+            }
+            if (lastScene == "River")
+            {
+                transform.position = new Vector3(-9, 0, 0);
+                movePoint.position = new Vector3(-9, 0, 0);
+                facing = 1;
+            }
+            if (lastScene == "Ocean")
+            {
+                transform.position = new Vector3(9, 0, 0);
+                movePoint.position = new Vector3(9, 0, 0);
+                facing = 3;
+            }
+            moveInMarket = false; 
+            spriteRenderer.sprite = sprites[facing];
+        }
     }
 
     void Awake()
@@ -76,22 +108,27 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Exit")
         {
             SceneManager.LoadScene("Ocean");
+            lastScene = "Ocean";
         }
         else if (collision.gameObject.tag == "Market")
         {
+            moveInMarket = true;
             SceneManager.LoadScene("Market");
         }
         else if (collision.gameObject.tag == "Lake")
         {
             SceneManager.LoadScene("Lake");
+            lastScene = "Lake";
         }
         else if (collision.gameObject.tag == "River")
         {
             SceneManager.LoadScene("River");
+            lastScene = "River";
         }
         else if (collision.gameObject.tag == "Pond")
         {
             SceneManager.LoadScene("Pond");
+            lastScene = "Pond";
         }
     }
 }

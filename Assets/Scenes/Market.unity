@@ -992,6 +992,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3457916346678944407, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.19928437
+      objectReference: {fileID: 0}
     - target: {fileID: 4394915586236030634, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4223,6 +4227,22 @@ PrefabInstance:
     - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
       propertyPath: exit.m_Bits
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
+      propertyPath: lakeSpawnPathPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
+      propertyPath: pondSpawnPathPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
+      propertyPath: oceanSpawnPathPoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
+      propertyPath: riverSpawnPathPoint
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7177890db43451409f5a6f175a770cf, type: 3}
