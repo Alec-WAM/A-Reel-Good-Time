@@ -19,6 +19,8 @@ public class StoreUI : MonoBehaviour
     
     public GameObject sellItemTab;
     public int sellSlot = 0;
+    public TMP_InputField sellInputField;
+    private GameObject fishSlotList;
 
     public float lakeRodPrice = 50;
     public float riverRodPrice = 100;
@@ -91,41 +93,13 @@ public class StoreUI : MonoBehaviour
             GameObject sellTab = Instantiate(sellItemTab);
             sellTab.transform.SetParent(listContent.transform, false);
             GameObject fishSlots = sellTab.transform.GetChild(0).gameObject;
-            GameObject fishSlotList = fishSlots.transform.GetChild(0).gameObject;
+            fishSlotList = fishSlots.transform.GetChild(0).gameObject;
 
             GameObject selectionImage = fishSlots.transform.GetChild(1).gameObject;
             GameObject selectionDecrButton = fishSlots.transform.GetChild(2).gameObject;
             GameObject selectionIncrButton = fishSlots.transform.GetChild(3).gameObject;
 
-            for (int i = 0; i < 5; i++)
-            {
-                GameObject slot = fishSlotList.transform.GetChild(i).gameObject;
-                GameObject child = slot.transform.GetChild(0).gameObject;
-                PlayerInventory.FishStack stack = playerInventory.getFishItem(i);
-                Image img = slot.GetComponent<Image>();
-                if (stack == null || !stack.isValid())
-                {
-                    //Set icon to empty, hide slot, and clear text
-                    img.sprite = null;
-                    slot.SetActive(false);
-                    if (child != null)
-                    {
-                        TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-                        text.text = "";
-                    }
-                }
-                else
-                {
-                    //Set icon to item's icon and update text count
-                    img.sprite = stack.item.sprite;
-                    slot.SetActive(true);
-                    if (child != null)
-                    {
-                        TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-                        text.text = "" + stack.count;
-                    }
-                }
-            }
+            updateSlots();
 
             selectionImage.transform.localPosition = new Vector3(-160 + (80 * sellSlot), 0, 0);
 
@@ -138,6 +112,14 @@ public class StoreUI : MonoBehaviour
             {
                 Button button = selectionIncrButton.GetComponent<Button>();
                 button.onClick.AddListener(delegate { increaseSellSlot(); });
+            }
+
+            GameObject sellButtons = sellTab.transform.GetChild(1).gameObject;
+            GameObject sellButton2 = sellButtons.transform.GetChild(0).gameObject;
+            if (sellButton2 != null)
+            {
+                Button button = sellButton2.GetComponent<Button>();
+                button.onClick.AddListener(delegate { sellCurrentFish(); });
             }
         }
         if (tab == 1)
@@ -263,7 +245,6 @@ public class StoreUI : MonoBehaviour
 
     public void increaseSellSlot()
     {
-        Debug.Log("Increase SellSlot");
         if (sellSlot < 4)
         {
             sellSlot++;
@@ -272,7 +253,6 @@ public class StoreUI : MonoBehaviour
 
     public void decreaseSellSlot()
     {
-        Debug.Log("Decrease SellSlot");
         if (sellSlot > 0)
         {
             sellSlot--;
@@ -293,5 +273,44 @@ public class StoreUI : MonoBehaviour
             playerInventory.writeToSave();
             reloadTab();
         }
+    }
+
+    public void updateSlots()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            GameObject slot = fishSlotList.transform.GetChild(i).gameObject;
+            GameObject child = slot.transform.GetChild(0).gameObject;
+            PlayerInventory.FishStack stack = playerInventory.getFishItem(i);
+            Image img = slot.GetComponent<Image>();
+            if (stack == null || !stack.isValid())
+            {
+                //Set icon to empty, hide slot, and clear text
+                img.sprite = null;
+                slot.SetActive(false);
+                if (child != null)
+                {
+                    TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+                    text.text = "";
+                }
+            }
+            else
+            {
+                //Set icon to item's icon and update text count
+                img.sprite = stack.item.sprite;
+                slot.SetActive(true);
+                if (child != null)
+                {
+                    TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+                    text.text = "" + stack.count;
+                }
+            }
+        }
+    }
+
+    public void sellCurrentFish()
+    {
+        playerInventory.sellFishItem(sellSlot, 1);
+        updateSlots();
     }
 }
