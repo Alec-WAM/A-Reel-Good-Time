@@ -77,7 +77,7 @@ public class PlayerInventory : MonoBehaviour
         loadFromSave();
     }
 
-    void writeToSave()
+    public void writeToSave()
     {
         string fishString = "";
         for(int i = 0; i < fishSlots.Length; i++)
@@ -155,6 +155,7 @@ public class PlayerInventory : MonoBehaviour
     {
         fishSlots = new FishStack[fishSlots.Length];
         money = 0;
+        currentRod = RodType.POND;
         writeToSave();
     }
 

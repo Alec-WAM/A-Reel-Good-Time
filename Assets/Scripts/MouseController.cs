@@ -11,6 +11,8 @@ public class MouseController : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
 
+    public GameObject storeUI;
+
     void Start()
     {
         //Fetch the Raycaster from the GameObject (the Canvas)
@@ -65,6 +67,11 @@ public class MouseController : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            storeUI.SetActive(true);
         }
     }
 }
