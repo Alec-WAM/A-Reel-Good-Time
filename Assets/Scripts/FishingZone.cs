@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -11,9 +12,39 @@ public class FishingZone : MonoBehaviour
 
     public PlayerInventory playerInventory;
     public GameObject uiFishCaught;
+    public GameObject uiFishingGame;
     public PlayerInventory.FishStack currentCaughtFish;
     public string hookedFish;
+    public float targetProgress = 0f;
+    public float increaseSpeed = 0.5f;
+    public float decreaseSpeed = 0.2f;
 
+  
+    private void Update()
+    {
+        GameObject progressBar = uiFishingGame.transform.GetChild(0).gameObject;
+        Slider value = progressBar.GetComponent<Slider>();
+        if (uiFishingGame.activeSelf == true)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                value.value += increaseSpeed * Time.deltaTime;
+            }
+            else
+            {
+                value.value -= decreaseSpeed * Time.deltaTime;
+            }
+            if (value.value == 0f)
+            {
+                uiFishingGame.SetActive(false);
+            }
+            else if(value.value == 1f)
+            {
+                uiFishingGame.SetActive(false);
+                catchFish(currentCaughtFish);
+            }
+        }
+    }
     public void onClick()
     {
         //TODO Add fishing minigame here
@@ -59,8 +90,18 @@ public class FishingZone : MonoBehaviour
             FishItem item = fishLoot[fishIndex];
 
             PlayerInventory.FishStack stack = new PlayerInventory.FishStack(item, 1);
-            catchFish(stack);
+            fishingMinigame(stack);
         }
+    }
+
+    public void fishingMinigame(PlayerInventory.FishStack stack)
+    {
+        Debug.Log("Got here");
+        uiFishingGame.SetActive(true);
+        GameObject progressBar = uiFishingGame.transform.GetChild(0).gameObject;
+        Slider value = progressBar.GetComponent<Slider>();
+        value.value = 0.25f;
+        currentCaughtFish = stack;
     }
 
     public void catchFish(PlayerInventory.FishStack stack)
