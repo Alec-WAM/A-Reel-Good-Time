@@ -9,6 +9,8 @@ public class FishingZone : MonoBehaviour
 {
     public PlayerInventory.RodType rodType;
     public List<FishItem> fishLoot;
+    public Texture2D cursorRod;
+    public Texture2D cursorCantFish;
 
     public PlayerInventory playerInventory;
     public GameObject uiFishCaught;
@@ -19,7 +21,18 @@ public class FishingZone : MonoBehaviour
     public float increaseSpeed = 0.5f;
     public float decreaseSpeed = 0.2f;
 
-  
+    public GameObject uiWarning;
+
+    void OnMouseEnter()
+    {
+        Cursor.SetCursor(cursorRod, Vector2.zero, CursorMode.Auto);
+    }
+
+    void OnMouseExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     private void Update()
     {
         GameObject progressBar = uiFishingGame.transform.GetChild(0).gameObject;
@@ -81,7 +94,12 @@ public class FishingZone : MonoBehaviour
     {
         if (!canFishHere())
         {
-            Debug.Log("You can't fish here");
+            if(uiWarning != null)
+            {
+                TextMeshProUGUI text = uiWarning.GetComponent<TextMeshProUGUI>();
+                text.text = "You need " + (rodType == PlayerInventory.RodType.OCEAN ? "an " : "a ") + rodType + " Rod";
+            }
+            StartCoroutine(warningTask());
             return;
         }
         if (fishLoot != null && canFishHere())
@@ -92,6 +110,13 @@ public class FishingZone : MonoBehaviour
             PlayerInventory.FishStack stack = new PlayerInventory.FishStack(item, 1);
             fishingMinigame(stack);
         }
+    }
+
+    public IEnumerator warningTask()
+    {
+        uiWarning.SetActive(true);
+        yield return new WaitForSeconds(3.0F);
+        uiWarning.SetActive(false);
     }
 
     public void fishingMinigame(PlayerInventory.FishStack stack)

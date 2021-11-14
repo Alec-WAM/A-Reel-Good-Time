@@ -1493,7 +1493,7 @@ PrefabInstance:
       objectReference: {fileID: 893590580}
     - target: {fileID: 3109467157533073823, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1622,6 +1622,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497c38ae856badc4fbe7e9198e618042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &449994305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4185278583343370716, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+  m_PrefabInstance: {fileID: 449994301}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &457822341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7180790374508729665, guid: d7177890db43451409f5a6f175a770cf, type: 3}
@@ -1690,6 +1695,8 @@ MonoBehaviour:
   - {fileID: 7770680026280032874, guid: 69f327a5075967b429d46bf0736e002a, type: 3}
   - {fileID: 14253495997976690, guid: ac87d88929dcee14883fea620e95be67, type: 3}
   - {fileID: 5943716168219129133, guid: d9e689dc42d6486409e70abc66fcb4e6, type: 3}
+  cursorRod: {fileID: 2800000, guid: 5434f092de2455a4897169592973b9ab, type: 3}
+  cursorCantFish: {fileID: 0}
   playerInventory: {fileID: 893590580}
   uiFishCaught: {fileID: 449994302}
   uiFishingGame: {fileID: 859738980}
@@ -1700,6 +1707,7 @@ MonoBehaviour:
   targetProgress: 0
   increaseSpeed: 0.5
   decreaseSpeed: 0.2
+  uiWarning: {fileID: 449994305}
 --- !u!61 &469650743
 BoxCollider2D:
   m_ObjectHideFlags: 0

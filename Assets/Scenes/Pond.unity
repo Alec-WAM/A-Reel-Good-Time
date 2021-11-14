@@ -2707,6 +2707,8 @@ MonoBehaviour:
   - {fileID: 1990409927738920062, guid: ea5e9e026e0dd6c4ca9e0ff25773ea3c, type: 3}
   - {fileID: 2814101212591282702, guid: 563a9da9c1f59864ebd222e3f67e7800, type: 3}
   - {fileID: 5943716168219129133, guid: d9e689dc42d6486409e70abc66fcb4e6, type: 3}
+  cursorRod: {fileID: 2800000, guid: 5434f092de2455a4897169592973b9ab, type: 3}
+  cursorCantFish: {fileID: 0}
   playerInventory: {fileID: 1580999070}
   uiFishCaught: {fileID: 7619945756201480332}
   uiFishingGame: {fileID: 340566614}
@@ -2717,6 +2719,7 @@ MonoBehaviour:
   targetProgress: 0
   increaseSpeed: 0.5
   decreaseSpeed: 0.2
+  uiWarning: {fileID: 7619945756201480335}
 --- !u!1 &1516840140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,7 +3604,7 @@ PrefabInstance:
       objectReference: {fileID: 1580999070}
     - target: {fileID: 3109467157533073823, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3742,3 +3745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497c38ae856badc4fbe7e9198e618042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7619945756201480335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4185278583343370716, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+  m_PrefabInstance: {fileID: 7619945756201480331}
+  m_PrefabAsset: {fileID: 0}
