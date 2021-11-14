@@ -23,7 +23,11 @@ public class MouseController : MonoBehaviour
 
     void Update()
     {
-       
+        if (PlayerController.isGamePaused)
+        {
+            return;
+        }
+
         //Check if the left Mouse button is clicked
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

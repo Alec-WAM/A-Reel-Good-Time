@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public static string lastScene;
     public static bool moveInMarket;
+    public static bool isGamePaused = false;
+    public PauseMenu pauseMenu;
 
     public float moveSpeed = 5f;
     public Transform movePoint;
@@ -63,6 +65,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGamePaused)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isGamePaused = false;
+                pauseMenu.hideMenu();
+            }
+            return;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                isGamePaused = true;
+                pauseMenu.showMenu();
+                return;
+            }
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, movePoint.position) <= 0.05f)

@@ -219,6 +219,10 @@ PrefabInstance:
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 410860306}
+    - target: {fileID: 3109467157533073823, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6952959627255648657, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -371,6 +375,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7619945756565003970, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
   m_PrefabInstance: {fileID: 333114885}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &333114888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4348360603206356162, guid: 564a7f5add7b4d846a8bcb328139b34a, type: 3}
+  m_PrefabInstance: {fileID: 333114885}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497c38ae856badc4fbe7e9198e618042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &410860305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +445,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7180790374508729670, guid: d7177890db43451409f5a6f175a770cf, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 333114888}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7177890db43451409f5a6f175a770cf, type: 3}
 --- !u!114 &410860306 stripped

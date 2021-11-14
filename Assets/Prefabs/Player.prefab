@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56b62fbbd0ca6494096bdf594432a9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 2040425434970364080, guid: 4a5fadd8ef9fe9f4bb93e7b14866e6d7, type: 3}
   moveSpeed: 3
   movePoint: {fileID: 7180790373986253849}
   whatStopsMovement:
@@ -168,3 +169,4 @@ MonoBehaviour:
   - item: {fileID: 0}
     count: 0
   money: 0
+  currentRod: 0
