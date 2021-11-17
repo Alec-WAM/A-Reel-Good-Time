@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
@@ -305,7 +306,20 @@ public class StoreUI : MonoBehaviour
                     text.text = "" + stack.count;
                 }
             }
+
+            EventTrigger trigger = slot.GetComponent<EventTrigger>();
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerDown;
+            int slotIndex = i;
+            entry.callback.AddListener((data) => { clickFishSlot(slotIndex); });
+            trigger.triggers.Add(entry);
         }
+    }
+
+    public void clickFishSlot(int index)
+    {
+        Debug.Log("Slot Clicked: " + index);
+        sellSlot = index;
     }
 
     public void sellCurrentFish()

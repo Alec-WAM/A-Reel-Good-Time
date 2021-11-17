@@ -1946,10 +1946,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rodType: 2
-  fishLoot:
+  commonFishLoot:
+  - {fileID: 7770680026280032874, guid: 69f327a5075967b429d46bf0736e002a, type: 3}
+  - {fileID: 1990409927738920062, guid: ea5e9e026e0dd6c4ca9e0ff25773ea3c, type: 3}
+  rareFishLoot:
+  - {fileID: 14253495997976690, guid: ac87d88929dcee14883fea620e95be67, type: 3}
   - {fileID: 5612386529470736649, guid: ae43c56799c05f741903d8d2f806f2eb, type: 3}
+  legendaryFishLoot:
   - {fileID: 2687299569211312107, guid: 6472fa4532df5d34b9691cb2582e39e7, type: 3}
-  - {fileID: 929240779129092741, guid: 4c763b6afc3da854d9e9c638002691cd, type: 3}
   cursorRod: {fileID: 2800000, guid: 5434f092de2455a4897169592973b9ab, type: 3}
   cursorCantFish: {fileID: 0}
   playerInventory: {fileID: 1888981704}

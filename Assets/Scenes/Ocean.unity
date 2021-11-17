@@ -3588,10 +3588,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rodType: 3
-  fishLoot:
-  - {fileID: 5015090970573828111, guid: 8b57d87dd2bab394bb9cc13fab3367bb, type: 3}
+  commonFishLoot:
   - {fileID: 1900417531686748170, guid: 4a7e6d0c9d73e764284aa040b9a6deed, type: 3}
+  rareFishLoot:
   - {fileID: 3439967727669167820, guid: bc55a709eab0801439aec442725fa1fc, type: 3}
+  legendaryFishLoot:
+  - {fileID: 5015090970573828111, guid: 8b57d87dd2bab394bb9cc13fab3367bb, type: 3}
   cursorRod: {fileID: 2800000, guid: 5434f092de2455a4897169592973b9ab, type: 3}
   cursorCantFish: {fileID: 0}
   playerInventory: {fileID: 410860306}

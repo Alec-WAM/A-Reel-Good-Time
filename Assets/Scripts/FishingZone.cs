@@ -8,7 +8,10 @@ using TMPro;
 public class FishingZone : MonoBehaviour
 {
     public PlayerInventory.RodType rodType;
-    public List<FishItem> fishLoot;
+    public List<FishItem> commonFishLoot;
+    public List<FishItem> rareFishLoot;
+    public List<FishItem> legendaryFishLoot;
+
     public Texture2D cursorRod;
     public Texture2D cursorCantFish;
 
@@ -17,6 +20,7 @@ public class FishingZone : MonoBehaviour
     public GameObject uiFishingGame;
     public PlayerInventory.FishStack currentCaughtFish;
     public string hookedFish;
+    public int hookedFishTier = 0; //0 = Common, 1 = Rare, 2 = Legendary
     public float targetProgress = 0f;
     public float increaseSpeed = 0.5f;
     public float decreaseSpeed = 0.2f;
@@ -103,10 +107,29 @@ public class FishingZone : MonoBehaviour
             StartCoroutine(warningTask());
             return;
         }
-        if (fishLoot != null && canFishHere())
+        if (canFishHere())
         {
-            var fishIndex = Random.Range(0, fishLoot.Count); //Get Random item
-            FishItem item = fishLoot[fishIndex];
+            FishItem item = null;
+            float range = Random.Range(0f, 100f);
+
+            if (range <= 60.0F) //Common Loot
+            {
+                var fishIndex = Random.Range(0, commonFishLoot.Count); //Get Random item
+                item = commonFishLoot[fishIndex];
+                hookedFishTier = 0;
+            }
+            else if (range > 60.0F && range <= 90.0F) //Rare Loot
+            {
+                var fishIndex = Random.Range(0, rareFishLoot.Count); //Get Random item
+                item = rareFishLoot[fishIndex];
+                hookedFishTier = 1;
+            }
+            else if (range > 90.0F) //Legendary Loot
+            {
+                var fishIndex = Random.Range(0, legendaryFishLoot.Count); //Get Random item
+                item = legendaryFishLoot[fishIndex];
+                hookedFishTier = 2;
+            }
 
             PlayerInventory.FishStack stack = new PlayerInventory.FishStack(item, 1);
             fishingMinigame(stack);
