@@ -98,6 +98,7 @@ public class FishingZone : MonoBehaviour
             {
                 TextMeshProUGUI text = uiWarning.GetComponent<TextMeshProUGUI>();
                 text.text = "You need " + (rodType == PlayerInventory.RodType.OCEAN ? "an " : "a ") + rodType + " Rod";
+                text.color = new Color(255F, 0F, 0F, 255F);
             }
             StartCoroutine(warningTask());
             return;

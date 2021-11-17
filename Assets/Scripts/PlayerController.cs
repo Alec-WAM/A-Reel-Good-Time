@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class PlayerController : MonoBehaviour
     public static bool moveInMarket;
     public static bool isGamePaused = false;
     public PauseMenu pauseMenu;
+    public GameObject merchant;
+    public GameObject storeUI;
+    public GameObject warningText;
 
     public float moveSpeed = 5f;
     public Transform movePoint;
@@ -81,6 +86,33 @@ public class PlayerController : MonoBehaviour
                 isGamePaused = true;
                 pauseMenu.showMenu();
                 return;
+            }
+        }
+
+        if(merchant != null)
+        {
+            float dist = Vector3.Distance(merchant.transform.position, transform.position);
+            if (dist <= 1.0F)
+            {
+                if (warningText != null)
+                {
+                    TextMeshProUGUI text = warningText.GetComponent<TextMeshProUGUI>();
+                    text.text = "Pres \'E\' to Trade";
+                    text.color = new Color(255F, 255F, 255F, 255F);
+                    warningText.SetActive(!storeUI.activeSelf);
+                }
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    storeUI.SetActive(true);
+                    return;
+                }
+            }
+            else
+            {
+                if (warningText != null)
+                {
+                    warningText.SetActive(false);
+                }
             }
         }
 

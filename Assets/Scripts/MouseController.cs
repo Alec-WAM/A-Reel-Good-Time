@@ -72,10 +72,5 @@ public class MouseController : MonoBehaviour
                 }
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            storeUI.SetActive(true);
-        }
     }
 }
