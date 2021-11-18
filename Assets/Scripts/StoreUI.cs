@@ -12,8 +12,6 @@ public class StoreUI : MonoBehaviour
 
     public Button sellButton;
     public Button rodButton;
-    public Button lureButton;
-    public Button upgradeButton;
 
     public GameObject listContent;
     public GameObject itemPrefab;
@@ -66,16 +64,6 @@ public class StoreUI : MonoBehaviour
         switchTab(1);
     }
 
-    public void clickLure()
-    {
-        switchTab(2);
-    }
-
-    public void clickUpgrade()
-    {
-        switchTab(3);
-    }
-
     public void switchTab(int tab)
     {
         this.storeTab = tab;
@@ -83,8 +71,6 @@ public class StoreUI : MonoBehaviour
         {
             sellButton.enabled = false;
             rodButton.enabled = true;
-            lureButton.enabled = true;
-            upgradeButton.enabled = true;
 
             foreach (Transform child in listContent.transform)
             {
@@ -127,8 +113,6 @@ public class StoreUI : MonoBehaviour
         {
             sellButton.enabled = true;
             rodButton.enabled = false;
-            lureButton.enabled = true;
-            upgradeButton.enabled = true;
 
             foreach (Transform child in listContent.transform)
             {
@@ -218,30 +202,6 @@ public class StoreUI : MonoBehaviour
                 }
             }
         }
-        if (tab == 2)
-        {
-            sellButton.enabled = true;
-            rodButton.enabled = true;
-            lureButton.enabled = false;
-            upgradeButton.enabled = true;
-
-            foreach (Transform child in listContent.transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-        }
-        if (tab == 3)
-        {
-            sellButton.enabled = true;
-            rodButton.enabled = true;
-            lureButton.enabled = true;
-            upgradeButton.enabled = false;
-
-            foreach (Transform child in listContent.transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-        }
     }
 
     public void increaseSellSlot()
@@ -263,6 +223,7 @@ public class StoreUI : MonoBehaviour
     public void closeStoreUI()
     {
         gameObject.SetActive(false);
+        PlayerController.isGamePaused = false;
     }
 
     public void buyRod(PlayerInventory.RodType rod, float money)
@@ -318,7 +279,6 @@ public class StoreUI : MonoBehaviour
 
     public void clickFishSlot(int index)
     {
-        Debug.Log("Slot Clicked: " + index);
         sellSlot = index;
     }
 

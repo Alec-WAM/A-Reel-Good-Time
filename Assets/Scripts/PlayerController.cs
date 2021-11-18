@@ -104,6 +104,8 @@ public class PlayerController : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     storeUI.SetActive(true);
+                    warningText.SetActive(false);
+                    isGamePaused = true;
                     return;
                 }
             }
@@ -156,32 +158,44 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void resetPointer()
+    {
+        //Reset Pointer to prevent special cursors from sticking around
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Exit")
         {
             SceneManager.LoadScene("Ocean");
             lastScene = "Ocean";
+            resetPointer();
         }
         else if (collision.gameObject.tag == "Market")
         {
             moveInMarket = true;
             SceneManager.LoadScene("Market");
+            resetPointer();
         }
         else if (collision.gameObject.tag == "Lake")
         {
             SceneManager.LoadScene("Lake");
             lastScene = "Lake";
+            resetPointer();
         }
         else if (collision.gameObject.tag == "River")
         {
             SceneManager.LoadScene("River");
             lastScene = "River";
+            resetPointer();
         }
         else if (collision.gameObject.tag == "Pond")
         {
             SceneManager.LoadScene("Pond");
             lastScene = "Pond";
+            resetPointer();
         }
     }
 }
