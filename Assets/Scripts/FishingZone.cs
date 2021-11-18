@@ -21,9 +21,10 @@ public class FishingZone : MonoBehaviour
     public PlayerInventory.FishStack currentCaughtFish;
     public string hookedFish;
     public int hookedFishTier = 0; //0 = Common, 1 = Rare, 2 = Legendary
-    public float targetProgress = 0f;
     public float increaseSpeed = 0.5f;
-    public float decreaseSpeed = 0.2f;
+    public float decreaseSpeed = 0.1f;
+    public float tensionIncrease = 0.6f;
+    public float tensionDecrease = 0.75f;
 
     public GameObject uiWarning;
 
@@ -40,18 +41,22 @@ public class FishingZone : MonoBehaviour
     private void Update()
     {
         GameObject progressBar = uiFishingGame.transform.GetChild(0).gameObject;
+        GameObject tensionBar = uiFishingGame.transform.GetChild(3).gameObject;
+        Slider tension = tensionBar.GetComponent<Slider>();
         Slider value = progressBar.GetComponent<Slider>();
         if (uiFishingGame.activeSelf == true)
         {
             if (Input.GetKey(KeyCode.E))
             {
                 value.value += increaseSpeed * Time.deltaTime;
+                tension.value += tensionIncrease * Time.deltaTime;
             }
             else
             {
                 value.value -= decreaseSpeed * Time.deltaTime;
+                tension.value -= tensionDecrease * Time.deltaTime;
             }
-            if (value.value == 0f)
+            if (value.value == 0f || tension.value == 1f)
             {
                 uiFishingGame.SetActive(false);
             }
@@ -148,9 +153,33 @@ public class FishingZone : MonoBehaviour
         Debug.Log("Got here");
         uiFishingGame.SetActive(true);
         GameObject progressBar = uiFishingGame.transform.GetChild(0).gameObject;
+        GameObject tensionBar = uiFishingGame.transform.GetChild(3).gameObject;
         Slider value = progressBar.GetComponent<Slider>();
+        Slider tension = tensionBar.GetComponent<Slider>();
         value.value = 0.25f;
+        tension.value = 0f;
         currentCaughtFish = stack;
+        if(hookedFishTier == 0)
+        {
+            increaseSpeed = 0.7f;
+            decreaseSpeed = 0.05f;
+            tensionIncrease = 0.3f;
+            tensionDecrease = 0.9f;
+        }
+        else if(hookedFishTier == 1)
+        {
+            increaseSpeed = 0.5f;
+            decreaseSpeed = 0.1f;
+            tensionIncrease = 0.4f;
+            tensionDecrease = 0.8f;
+        }
+        else if(hookedFishTier == 2)
+        {
+            increaseSpeed = 0.5f;
+            decreaseSpeed = 0.1f;
+            tensionIncrease = 0.6f;
+            tensionDecrease = 0.75f;
+        }
     }
 
     public void catchFish(PlayerInventory.FishStack stack)
