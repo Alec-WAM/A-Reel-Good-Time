@@ -45,6 +45,17 @@ public class StoreUI : MonoBehaviour
                 GameObject fishSlots = sellTab.transform.GetChild(0).gameObject;
                 GameObject selectionImage = fishSlots.transform.GetChild(1).gameObject;
                 selectionImage.transform.localPosition = new Vector3(-160 + (80 * sellSlot), 0, 0);
+
+                PlayerInventory.FishStack stack = playerInventory.getFishItem(sellSlot);
+                float value = stack != null ? stack.item.value : 0;
+
+                GameObject sellValue = sellTab.transform.GetChild(2).gameObject;
+                sellValue.SetActive(value > 0);
+                if (sellValue != null)
+                {
+                    TextMeshProUGUI text = sellValue.GetComponent<TextMeshProUGUI>();
+                    text.text = "$" + value;
+                }
             }
         }
     }
@@ -107,6 +118,13 @@ public class StoreUI : MonoBehaviour
             {
                 Button button = sellButton2.GetComponent<Button>();
                 button.onClick.AddListener(delegate { sellCurrentFish(); });
+            }
+
+            GameObject sellValue = sellTab.transform.GetChild(2).gameObject;
+            if (sellValue != null)
+            {
+                TextMeshProUGUI text = sellValue.GetComponent<TextMeshProUGUI>();
+                text.text = "$" + lakeRodPrice;
             }
         }
         if (tab == 1)
