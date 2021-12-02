@@ -30,6 +30,8 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    #if UNITY_EDITOR
+
     [CustomEditor(typeof(PlayerInventory))]
     public class customButton : Editor
     {
@@ -60,6 +62,8 @@ public class PlayerInventory : MonoBehaviour
         }
 
     }
+
+    #endif
 
     public enum RodType
     {
