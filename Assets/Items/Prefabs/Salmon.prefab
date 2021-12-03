@@ -47,7 +47,7 @@ MonoBehaviour:
   id: salmon
   name: Salmon
   sprite: {fileID: 21300000, guid: ea6eb4409fe04ca4985dee99c446d1cf, type: 3}
-  value: 5
+  value: 15
 --- !u!212 &9002543005609074085
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ MonoBehaviour:
   id: koi
   name: Koi
   sprite: {fileID: 21300000, guid: 9f15a3c0bad3be64e988c9de8c02e547, type: 3}
-  value: 3
+  value: 8
 --- !u!212 &8796076657446955263
 SpriteRenderer:
   m_ObjectHideFlags: 0

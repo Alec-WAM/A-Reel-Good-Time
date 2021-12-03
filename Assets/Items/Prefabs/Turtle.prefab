@@ -47,7 +47,7 @@ MonoBehaviour:
   id: turtle
   name: Turtle
   sprite: {fileID: 21300000, guid: c885ae5113fdc214faaee97fdf70c3ea, type: 3}
-  value: 5
+  value: 12
 --- !u!212 &1107904630839740380
 SpriteRenderer:
   m_ObjectHideFlags: 0

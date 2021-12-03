@@ -161,24 +161,24 @@ public class FishingZone : MonoBehaviour
         currentCaughtFish = stack;
         if(hookedFishTier == 0)
         {
-            increaseSpeed = 0.7f;
-            decreaseSpeed = 0.05f;
-            tensionIncrease = 0.3f;
-            tensionDecrease = 0.9f;
+            increaseSpeed = 0.4f;
+            decreaseSpeed = 0.1f;
+            tensionIncrease = 0.6f;
+            tensionDecrease = 0.5f;
         }
         else if(hookedFishTier == 1)
         {
-            increaseSpeed = 0.5f;
-            decreaseSpeed = 0.1f;
-            tensionIncrease = 0.4f;
-            tensionDecrease = 0.8f;
+            increaseSpeed = 0.3f;
+            decreaseSpeed = 0.2f;
+            tensionIncrease = 0.6f;
+            tensionDecrease = 0.5f;
         }
         else if(hookedFishTier == 2)
         {
-            increaseSpeed = 0.5f;
-            decreaseSpeed = 0.1f;
-            tensionIncrease = 0.6f;
-            tensionDecrease = 0.75f;
+            increaseSpeed = 0.2f;
+            decreaseSpeed = 0.15f;
+            tensionIncrease = 0.8f;
+            tensionDecrease = 0.7f;
         }
     }
 

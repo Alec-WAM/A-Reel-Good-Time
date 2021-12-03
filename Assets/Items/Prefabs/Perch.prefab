@@ -47,7 +47,7 @@ MonoBehaviour:
   id: perch
   name: Perch
   sprite: {fileID: 21300000, guid: 8158f771e1b4c5a40bc63b4778002219, type: 3}
-  value: 7
+  value: 8
 --- !u!212 &5080931682342600335
 SpriteRenderer:
   m_ObjectHideFlags: 0

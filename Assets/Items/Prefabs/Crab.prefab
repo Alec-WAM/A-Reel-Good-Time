@@ -47,7 +47,7 @@ MonoBehaviour:
   id: crab
   name: Crab
   sprite: {fileID: 21300000, guid: cd3b5a5035bb36f429e74213545d49d8, type: 3}
-  value: 5
+  value: 15
 --- !u!212 &2034904894262307393
 SpriteRenderer:
   m_ObjectHideFlags: 0

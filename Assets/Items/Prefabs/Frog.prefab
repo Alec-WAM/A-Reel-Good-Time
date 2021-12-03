@@ -47,7 +47,7 @@ MonoBehaviour:
   id: frog
   name: Frog
   sprite: {fileID: 21300000, guid: e0d1053aa60dcd34087e516281437b70, type: 3}
-  value: 1
+  value: 12
 --- !u!212 &4593508953861167430
 SpriteRenderer:
   m_ObjectHideFlags: 0
